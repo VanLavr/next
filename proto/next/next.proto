@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package next;
+
+option go_package = "next.proto";
+
+message User {
+    int64  uid = 1;
+    string username = 2;
+    string password = 3;
+}
+
+message App {
+    int64  id = 1;
+    string name = 2;
+}
+
+service UserController {
+    rpc Create(CreateUser)       returns (CreateResponse);
+    rpc Update(UpdateUser)       returns (UpdateResponse);
+    rpc Delete(DeleteUser)       returns (DeleteResponse);
+    rpc Fetch(FetchUsers)        returns (FetchResponse);
+    rpc FetchByID(FetchUserByID) returns (FetchIDResponse);
+}
+
+message FetchUsers {
+    int32 limit = 1;
+}
+
+message FetchResponse {
+    repeated User users = 1;
+}
+
+message FetchUserByID {
+    int64 uid = 1;
+}
+
+message FetchIDResponse {
+    int64  uid = 1;
+    string username = 2;
+    string password = 3;
+}
+
+message DeleteUser {
+    int64 uid = 1;
+}
+
+message DeleteResponse {
+    int64 uid =1;
+}
+
+message UpdateUser {
+    int64  uid = 1;
+    string username = 2;
+}
+
+message UpdateResponse {
+    int64 uid = 1;
+}
+
+message CreateUser {
+    string username = 1;
+    string password = 2;
+}
+
+message CreateResponse {
+    int64 uid = 1;
+}
+
+service Application {
+    rpc Create(CreateApp)       returns (CreateAppResponse);
+    rpc Update(UpdateApp)       returns (UpdateAppResponse);
+    rpc Delete(DeleteApp)       returns (DeleteAppResponse);
+    rpc Fetch(FetchApp)         returns (FetchAppResponse);
+    rpc FetchByID(FetchAppByID) returns (FetchAppIDResponse);
+}
+
+message CreateApp {
+    string name = 1;
+}
+
+message CreateAppResponse {
+    int64 id = 1;
+}
+
+message UpdateApp {
+    int64 id = 1;
+    string name = 2;
+}
+
+message UpdateAppResponse {
+    int64 id = 1;
+}
+
+message DeleteApp {
+    int64 id = 1;
+}
+
+message DeleteAppResponse {
+    int64 id = 1;
+}
+
+message FetchApp {
+    int32 limit = 1;
+}
+
+message FetchAppResponse {
+    repeated App apps = 1;
+}
+
+message FetchAppByID {
+    int64 id = 1;
+}
+
+message FetchAppIDResponse {
+    int64 id = 1;
+    string name = 2;
+}
