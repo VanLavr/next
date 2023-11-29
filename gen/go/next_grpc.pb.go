@@ -4,7 +4,7 @@
 // - protoc             v4.24.4
 // source: next.proto
 
-package next_proto
+package next
 
 import (
 	context "context"
