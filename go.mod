@@ -1,4 +1,4 @@
-module next
+module github.com/VanLavr/next
 
 go 1.21.3
 
